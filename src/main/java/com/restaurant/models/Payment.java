@@ -1,5 +1,4 @@
 package com.restaurant.models;
-import com.restaurant.models.Order;
 
 import java.time.LocalDateTime;
 

@@ -88,6 +88,7 @@ public class ClientDAOImpl implements com.restaurant.dao.ClientDAO {
                 clients.add(mapResultSetToClient(rs));
             }
         }
+        System.out.println("Loaded " + clients.size() + " clients.");
         return clients;
     }
 

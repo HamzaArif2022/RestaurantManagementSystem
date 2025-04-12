@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx/24"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.restaurant.controllers.MainController">
+
+    <top>
+        <HBox alignment="CENTER" style="-fx-background-color: #2a3f54;">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <Label text="Restaurant Management System"
+                   style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <GridPane alignment="CENTER" hgap="20" vgap="20">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Button text="Client Management"
+                    style="-fx-font-size: 16; -fx-min-width: 200; -fx-min-height: 100;"
+                    onAction="#loadClientView"/>
+
+            <Button text="Menu Management"
+                    style="-fx-font-size: 16; -fx-min-width: 200; -fx-min-height: 100;"
+
+                    GridPane.columnIndex="1"
+                    onAction="#loadMenuView"
+            />
+
+            <Button text="Order Management"
+                    style="-fx-font-size: 16; -fx-min-width: 200; -fx-min-height: 100;"
+                    onAction="#loadOrderView"
+                    GridPane.rowIndex="1"/>
+
+            <Button text="Reports"
+                    style="-fx-font-size: 16; -fx-min-width: 200; -fx-min-height: 100;"
+
+                    GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        </GridPane>
+    </center>
+</BorderPane>

@@ -1,23 +1,39 @@
 package com.restaurant.models;
 
+import java.math.BigDecimal;
+
+
 public class MenuItem {
     private int itemId;
     private String name;
     private String description;
-    private double price;
+    private BigDecimal price; // Use BigDecimal for precise currency representation
     private String category;
-    private int preparationTime;
+    private int preparationTime; // Preparation time in minutes
     private boolean isAvailable;
 
-    // Constructors
+    // Default constructor
     public MenuItem() {}
 
-    public MenuItem(String name, String description, double price, String category) {
+
+    // Constructor for creating a new menu item
+    public MenuItem(String name, String description, BigDecimal price, String category) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.category = category;
-        this.isAvailable = true;
+        this.isAvailable = true; // Default to available
+    }
+
+    // Constructor for loading from the database
+    public MenuItem(int itemId, String name, String description, BigDecimal price, String category, int preparationTime, boolean isAvailable) {
+        this.itemId = itemId;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+        this.preparationTime = preparationTime;
+        this.isAvailable = isAvailable;
     }
 
     // Getters and Setters
@@ -45,11 +61,11 @@ public class MenuItem {
         this.description = description;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

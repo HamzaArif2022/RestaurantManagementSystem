@@ -1,6 +1,5 @@
 package com.restaurant.models;
-import com.restaurant.models.Order;
-import com.restaurant.models.MenuItem;
+
 public class OrderItem {
     private int orderItemId;
     private Order order;

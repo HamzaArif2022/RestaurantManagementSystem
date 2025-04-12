@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<BorderPane xmlns="http://javafx.com/javafx/24"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.restaurant.controllers.MenuItemController">
+
+    <top>
+        <HBox alignment="CENTER" spacing="10">
+            <Label text="Menu Management" style="-fx-font-size: 20;"/>
+            <TextField fx:id="searchField" promptText="Search..." onKeyReleased="#handleSearch"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="10">
+            <TableView fx:id="menuTable">
+                <columns>
+                    <TableColumn text="ID" prefWidth="50">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="itemId"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Name" prefWidth="150">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="name"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Description" prefWidth="200">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="description"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Price" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="price"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Category" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="category"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Prep Time" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="preparationTime"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Available" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="isAvailable"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+
+            <VBox spacing="10">
+                <TextField fx:id="nameField" promptText="Name"/>
+                <TextField fx:id="descriptionField" promptText="Description"/>
+                <TextField fx:id="priceField" promptText="Price"/>
+                <TextField fx:id="categoryField" promptText="Category"/>
+                <TextField fx:id="preparationTimeField" promptText="Preparation Time (minutes)"/>
+                <CheckBox fx:id="availabilityCheckbox" text="Available"/>
+            </VBox>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Add Item" onAction="#handleAddMenuItem"/>
+                <Button text="Edit Item" onAction="#handleEditMenuItem"/>
+                <Button text="Delete Item" onAction="#handleDeleteMenuItem"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

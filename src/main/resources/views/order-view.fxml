@@ -1,0 +1,22 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="com.restaurant.controllers.OrderController">
+    <ComboBox fx:id="clientComboBox" promptText="Select Client" />
+    <ComboBox fx:id="employeeComboBox" promptText="Select Employee" />
+    <TextField fx:id="tableNumberField" promptText="Table Number" />
+    <TextArea fx:id="notesField" promptText="Notes" />
+    <Button text="Place Order" onAction="#handlePlaceOrder" />
+    <TableView fx:id="orderTable">
+        <columns>
+            <TableColumn text="Order ID" />
+            <TableColumn text="Client" />
+            <TableColumn text="Employee" />
+            <TableColumn text="Table Number" />
+            <TableColumn text="Status" />
+            <TableColumn text="Order Date" />
+        </columns>
+    </TableView>
+</VBox>

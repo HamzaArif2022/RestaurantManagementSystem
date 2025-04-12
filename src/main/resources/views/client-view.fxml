@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<BorderPane xmlns="http://javafx.com/javafx/24"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.restaurant.controllers.ClientController">
+
+    <!-- Top section with the title -->
+    <top>
+        <HBox alignment="CENTER" spacing="10" style="-fx-background-color: #2a3f54;">
+            <Label text="Client Management" style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <!-- Center section with the TableView -->
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <TableView fx:id="clientTable">
+                <columns>
+                    <TableColumn text="ID" prefWidth="50">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="clientId"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Name" prefWidth="150">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="name"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Phone" prefWidth="120">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="phone"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Email" prefWidth="200">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="email"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Join Date" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="joinDate"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="loyaltyPoints" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="loyaltyPoints"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+
+            <!-- Input fields for editing client details -->
+            <HBox spacing="10" alignment="CENTER">
+                <TextField fx:id="nameField" promptText="Enter Name"/>
+                <TextField fx:id="phoneField" promptText="Enter Phone"/>
+                <TextField fx:id="emailField" promptText="Enter Email"/>
+                <TextField fx:id="loyaltyPointsField" promptText="Enter Loyalty Points"/>
+            </HBox>
+
+            <!-- Buttons for managing clients -->
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Add Client" fx:id="addBtn" onAction="#handleAddClient"/>
+                <Button text="Edit Client" fx:id="editBtn" onAction="#handleEditClient"/>
+                <Button text="Delete Client" fx:id="deleteBtn" onAction="#handleDeleteClient"/>
+            </HBox>
+        </VBox>
+    </center>
+
+    <!-- Bottom section with search field and button -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <TextField fx:id="searchField" promptText="Search clients..."/>
+            <Button text="Search" onAction="#handleSearch"/>
+        </HBox>
+    </bottom>
+</BorderPane>

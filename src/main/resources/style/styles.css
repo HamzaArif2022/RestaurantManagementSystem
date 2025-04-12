@@ -1,0 +1,31 @@
+/* Table styling */
+.table-view {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-view .column-header {
+    -fx-background-color: #2a3f54;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f0f0f0;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #3d7bb3;
+    -fx-text-fill: white;
+}
+
+/* Button styling */
+.button {
+    -fx-background-color: #2a3f54;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #3d7bb3;
+}
