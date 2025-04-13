@@ -69,4 +69,9 @@ public class Client {
     public void setLoyaltyPoints(int loyaltyPoints) {
         this.loyaltyPoints = loyaltyPoints;
     }
+
+    @Override
+    public String toString() {
+        return name; // Return the client's name
+    }
 }

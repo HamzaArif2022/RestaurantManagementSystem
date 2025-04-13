@@ -12,4 +12,6 @@ public interface OrderDAO {
     List<Order> getAllOrders() throws SQLException;
     List<Order> getOrdersByStatus(String status) throws SQLException;
     List<Order> getOrdersByClient(int clientId) throws SQLException;
+    void deleteOrder(int orderId) throws SQLException;
+    void updateOrder(Order order) throws SQLException;
 }

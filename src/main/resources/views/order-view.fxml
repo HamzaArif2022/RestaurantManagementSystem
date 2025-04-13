@@ -1,22 +1,46 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+
 <VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="com.restaurant.controllers.OrderController">
     <ComboBox fx:id="clientComboBox" promptText="Select Client" />
     <ComboBox fx:id="employeeComboBox" promptText="Select Employee" />
     <TextField fx:id="tableNumberField" promptText="Table Number" />
     <TextArea fx:id="notesField" promptText="Notes" />
+
+    <ComboBox fx:id="menuItemComboBox" promptText="Select Menu Item" />
+    <TextField fx:id="itemQuantityField" promptText="Quantity" />
+    <Button text="Add Item" onAction="#handleAddItem" />
+    <Button text="Delete Order" onAction="#handleDeleteOrder" />
+    <Button text="Change Order Status" onAction="#handleChangeOrderStatus" />
+
+    <TableView fx:id="orderItemsTable">
+        <columns>
+            <TableColumn fx:id="itemNameColumn" text="Item Name" />
+            <TableColumn fx:id="itemQuantityColumn" text="Quantity" />
+        </columns>
+    </TableView>
+
     <Button text="Place Order" onAction="#handlePlaceOrder" />
+
+    <Label text="Payment Details" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+    <HBox spacing="10">
+        <ComboBox fx:id="paymentMethodComboBox" promptText="Select Payment Method" />
+        <TextField fx:id="paymentAmountField" promptText="Amount" />
+        <TextField fx:id="tipsField" promptText="Tips (Optional)" />
+        <Button text="Add Payment" onAction="#handleAddPayment" />
+    </HBox>
+
     <TableView fx:id="orderTable">
         <columns>
-            <TableColumn text="Order ID" />
-            <TableColumn text="Client" />
-            <TableColumn text="Employee" />
-            <TableColumn text="Table Number" />
-            <TableColumn text="Status" />
-            <TableColumn text="Order Date" />
+            <TableColumn fx:id="orderIdColumn" text="Order ID" />
+            <TableColumn fx:id="clientColumn" text="Client" />
+            <TableColumn fx:id="employeeColumn" text="Employee" />
+            <TableColumn fx:id="tableNumberColumn" text="Table Number" />
+            <TableColumn fx:id="statusColumn" text="Status" />
+            <TableColumn fx:id="orderDateColumn" text="Order Date" />
+            <TableColumn fx:id="totalAmountColumn" text="Total Amount" />
+
         </columns>
     </TableView>
 </VBox>

@@ -10,4 +10,7 @@ public interface MenuItemDAO {
     void addMenuItem(MenuItem item) throws SQLException;
     void updateMenuItem(MenuItem item) throws SQLException;
     void deleteMenuItem(int itemId) throws SQLException;
+    double getItemPrice(int itemId) throws SQLException;
+
+
 }

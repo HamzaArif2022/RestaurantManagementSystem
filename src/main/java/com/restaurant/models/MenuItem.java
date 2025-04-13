@@ -52,6 +52,10 @@ public class MenuItem {
     public void setName(String name) {
         this.name = name;
     }
+    @Override
+    public String toString() {
+        return name; // Return the item name for display in ComboBox
+    }
 
     public String getDescription() {
         return description;

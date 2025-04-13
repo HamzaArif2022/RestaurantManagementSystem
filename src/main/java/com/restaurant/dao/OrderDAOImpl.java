@@ -14,14 +14,16 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public void placeOrder(Order order) throws SQLException {
-        String sql = "INSERT INTO orders (client_id, employee_id, table_number, status, notes) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO orders (client_id, employee_id, table_number, status, notes, total_amount) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setInt(1, order.getClient().getClientId());
-            stmt.setInt(m2, order.getEmployee().getEmployeeId());
+            stmt.setInt(2, order.getEmployee().getEmployeeId());
             stmt.setInt(3, order.getTableNumber());
             stmt.setString(4, order.getStatus());
             stmt.setString(5, order.getNotes());
+            stmt.setDouble(6, order.getTotalAmount()); // Add this line to set total_amount
+
             stmt.executeUpdate();
             try (ResultSet rs = stmt.getGeneratedKeys()) {
                 if (rs.next()) {
@@ -35,7 +37,6 @@ public class OrderDAOImpl implements OrderDAO {
             }
         }
     }
-
     @Override
     public void updateOrderStatus(int orderId, String status) throws SQLException {
         String sql = "UPDATE orders SET status = ? WHERE order_id = ?";
@@ -67,6 +68,27 @@ public class OrderDAOImpl implements OrderDAO {
             }
         }
         return null;
+    }
+
+    @Override
+    public void deleteOrder(int orderId) throws SQLException {
+        String sql = "DELETE FROM orders WHERE order_id = ?";
+        try (Connection conn = DBConfig.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, orderId);
+            pstmt.executeUpdate();
+        }
+    }
+
+    @Override
+    public void updateOrder(Order order) throws SQLException {
+        String sql = "UPDATE orders SET status = ? WHERE order_id = ?";
+        try (Connection conn = DBConfig.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, order.getStatus());
+            pstmt.setInt(2, order.getOrderId());
+            pstmt.executeUpdate();
+        }
     }
 
     @Override
@@ -136,6 +158,8 @@ public class OrderDAOImpl implements OrderDAO {
         Employee employee = new Employee();
         employee.setEmployeeId(rs.getInt("employee_id"));
         order.setEmployee(employee);
+        order.setTotalAmount(rs.getDouble("total_amount")); // Ensure this line is present
+
 
         return order;
     }

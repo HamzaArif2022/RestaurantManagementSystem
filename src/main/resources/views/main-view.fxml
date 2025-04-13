@@ -44,6 +44,10 @@
                     style="-fx-font-size: 16; -fx-min-width: 200; -fx-min-height: 100;"
 
                     GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Button text="Employee Management"
+                    style="-fx-font-size: 16; -fx-min-width: 200; -fx-min-height: 100;"
+                    onAction="#loadEmployeeView"
+                    GridPane.rowIndex="1" GridPane.columnIndex="1"/>
         </GridPane>
     </center>
 </BorderPane>

@@ -50,6 +50,20 @@ public class MenuItemDAOImpl implements MenuItemDAO {
             stmt.executeUpdate();
         }
     }
+    @Override
+    public double getItemPrice(int itemId) throws SQLException {
+        String sql = "SELECT price FROM Menu_items WHERE item_id = ?";
+
+        try (Connection conn = DBConfig.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, itemId);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getDouble("price");
+            }
+        }
+        return 0.0; // Default value if not found
+    }
 
     @Override
     public void updateMenuItem(MenuItem item) throws SQLException {

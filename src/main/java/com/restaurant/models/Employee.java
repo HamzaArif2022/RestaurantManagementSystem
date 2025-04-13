@@ -20,6 +20,7 @@ public class Employee {
         this.email = email;
         this.phone = phone;
         this.hireDate = LocalDate.now();
+        this.passwordHash = null;
     }
 
     // Getters and Setters
@@ -77,5 +78,9 @@ public class Employee {
 
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
+    }
+    @Override
+    public String toString() {
+        return name; // Return the client's name
     }
 }

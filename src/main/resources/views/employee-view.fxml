@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="com.restaurant.controllers.EmployeeController">
+    <TextField fx:id="nameField" promptText="Employee Name" />
+    <TextField fx:id="roleField" promptText="Role" />
+    <TextField fx:id="emailField" promptText="Email" />
+    <TextField fx:id="phoneField" promptText="Phone" />
+    <Button text="Add Employee" onAction="#handleAddEmployee" />
+    <Button text="Update Employee" onAction="#handleUpdateEmployee" />
+    <Button text="Delete Employee" onAction="#handleDeleteEmployee" />
+    <Button text="clear" onAction="#handleclearEmployee" />
+
+    <TableView fx:id="employeeTable">
+        <columns>
+            <TableColumn fx:id="employeeIdColumn" text="Employee ID" />
+            <TableColumn fx:id="nameColumn" text="Name" />
+            <TableColumn fx:id="roleColumn" text="Role" />
+            <TableColumn fx:id="emailColumn" text="Email" />
+            <TableColumn fx:id="phoneColumn" text="Phone" />
+            <TableColumn fx:id="hireDateColumn" text="Hire Date" />
+        </columns>
+    </TableView>
+</VBox>

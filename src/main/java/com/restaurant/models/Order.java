@@ -1,27 +1,35 @@
 package com.restaurant.models;
 
+import com.restaurant.dao.MenuItemDAO;
+
+import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
     private int orderId;
     private Client client;
+    private double totalAmount;
     private Employee employee;
     private int tableNumber;
     private LocalDateTime orderDate;
+    private List<OrderItem> orderItems;
     private String status;
     private String notes;
     private List<OrderItem> items;
 
     // Constructors
-    public Order() {}
-
+    public Order() {
+        this.items = new ArrayList<>(); // Initialize the list here
+    }
     public Order(Client client, Employee employee, int tableNumber) {
         this.client = client;
         this.employee = employee;
         this.tableNumber = tableNumber;
         this.orderDate = LocalDateTime.now();
         this.status = "Pending";
+        this.items = new ArrayList<>(); // Initialize the list here as well
     }
 
     // Getters and Setters
@@ -40,5 +48,17 @@ public class Order {
     public String getNotes() { return notes; }
     public void setNotes(String notes) { this.notes = notes; }
     public List<OrderItem> getItems() { return items; }
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount; // Setter for totalAmount
+    }
+    public double getTotalAmount() { return totalAmount; }
+    public double calculateTotalAmount(MenuItemDAO menuItemDAO) throws SQLException {
+        totalAmount = 0.0;
+        for (OrderItem item : items) { // Use the items list
+            double itemPrice = menuItemDAO.getItemPrice(item.getMenuItem().getItemId()); // Ensure this is correct
+            totalAmount += itemPrice * item.getQuantity();
+        }
+        return totalAmount;
+    }
     public void setItems(List<OrderItem> items) { this.items = items; }
 }
