@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<BorderPane xmlns="http://javafx.com/javafx/24"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.restaurant.controllers.PaymentMethodController">
+
+    <top>
+        <HBox alignment="CENTER" style="-fx-background-color: #2a3f54;">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <Label text="Payment Method Management" style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <TableView fx:id="paymentMethodTable">
+                <columns>
+                    <TableColumn text="ID" fx:id="idColumn" prefWidth="50">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="id"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Label" fx:id="labelColumn" prefWidth="150">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="label"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Active" fx:id="isActiveColumn" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="isActive"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+
+            <HBox spacing="10" alignment="CENTER">
+                <TextField fx:id="labelField" promptText="Enter Payment Method Label"/>
+                <CheckBox fx:id="isActiveCheckbox" text="Active"/>
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Add Payment Method" onAction="#handleAddPaymentMethod"/>
+                <Button text="Update Payment Method" onAction="#handleUpdatePaymentMethod"/>
+                <Button text="Delete Payment Method" onAction="#handleDeletePaymentMethod"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

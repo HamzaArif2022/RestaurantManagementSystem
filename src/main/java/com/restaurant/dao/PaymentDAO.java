@@ -7,4 +7,5 @@ import java.util.List;
 public interface PaymentDAO {
     void addPayment(Payment payment) throws SQLException;
     List<Payment> getPaymentsForOrder(int orderId) throws SQLException; // Optional
+
 }

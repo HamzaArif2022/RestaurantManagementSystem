@@ -58,6 +58,10 @@ public class MainController {
     private void loadReportsView() {
         loadView("/views/reports-view.fxml", "Reports Dashboard");
     }
+    @FXML
+    private void loadPaymentMethodView() {
+        loadView("/views/payment_method-view.fxml", "Payment method Management");
+    }
 
     // Open Settings Dialog
     @FXML

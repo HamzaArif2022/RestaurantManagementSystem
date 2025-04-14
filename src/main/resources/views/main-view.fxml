@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
+
 <BorderPane xmlns="http://javafx.com/javafx/24"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.restaurant.controllers.MainController">
@@ -30,10 +31,8 @@
 
             <Button text="Menu Management"
                     style="-fx-font-size: 16; -fx-min-width: 200; -fx-min-height: 100;"
-
-                    GridPane.columnIndex="1"
                     onAction="#loadMenuView"
-            />
+                    GridPane.columnIndex="1"/>
 
             <Button text="Order Management"
                     style="-fx-font-size: 16; -fx-min-width: 200; -fx-min-height: 100;"
@@ -42,12 +41,16 @@
 
             <Button text="Reports"
                     style="-fx-font-size: 16; -fx-min-width: 200; -fx-min-height: 100;"
-
+                    onAction="#loadReportsView"
                     GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Button text="Payment Method Management"
+                    style="-fx-font-size: 16; -fx-min-width: 200; -fx-min-height: 100;"
+                    onAction="#loadPaymentMethodView" />
+
             <Button text="Employee Management"
                     style="-fx-font-size: 16; -fx-min-width: 200; -fx-min-height: 100;"
                     onAction="#loadEmployeeView"
-                    GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    GridPane.rowIndex="2" GridPane.columnIndex="0"/>
         </GridPane>
     </center>
 </BorderPane>
